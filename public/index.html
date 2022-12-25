@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Smarthome Controller</title>
+		<link rel="icon" type="image/png" href="./images/favicon.ico" />
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet" />
+	</head>
+
+	<body oncopy="return false" oncut="return false" onpaste="return false">
+		<div class="Wrapper">
+			<!-- <div class="Dashboard">
+				<span>asd</span>
+			</div> -->
+			<div class="roomLabel">Living room</div>
+			<div class="deviceGrid">
+				<input type="checkbox" id="Light1" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 1</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+				<input type="checkbox" id="Light2" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 2</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+				<input type="checkbox" id="Light3" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 3</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+			</div>
+			<div class="roomLabel">Bedroom</div>
+			<div class="deviceGrid">
+				<input type="checkbox" id="Light4" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 4</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+				<input type="checkbox" id="Light5" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 5</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+				<input type="checkbox" id="Light6" name="Light26" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="textWrapper">
+						<div class="device">Light 6</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="script.js"></script>
+		<script src="fontawesome.js"></script>
+	</body>
+</html>

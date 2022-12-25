@@ -1,0 +1,80 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+}
+
+html {
+	font-family: Roboto, Helvetica, sans-serif;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+/* -webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none; */
+.Wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+	color: #fafafa;
+	background-color: #121212;
+	padding: 10px;
+}
+
+.Dashboard {
+
+}
+.device {
+	color: #fafafa;
+	font-weight: 500;
+}
+.status {
+	color: #c7c7c7;
+	font-weight: 400;
+}
+.deviceGrid {
+	display: grid !important;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: 10px;
+	grid-row-gap: 10px;
+}
+.Toggle::before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 0;
+	padding-bottom: calc(100% / 2 - 6px);
+}
+.Toggle {
+	display: flex;
+	border-radius: 15px;
+	padding: 10px;
+	position: relative;
+	align-items: center;
+	background-color: #1D1D1D;
+}
+.icon {
+	background-color: #2a2a2a;
+	border-radius: 50%;
+	height: 50px;
+	width: 50px;
+	line-height: 50px;
+	float: left;
+	margin: 0 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+input:checked + .Toggle {
+	background-color: #3D5AFF;
+}
+input:checked + .Toggle > .icon {
+	background-color: #4F69FD;
+}
