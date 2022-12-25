@@ -12,26 +12,24 @@ html {
 	-ms-user-select: none;
 	user-select: none;
 }
-/* -webkit-touch-callout: none;
-	-webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none; */
 .Wrapper {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
 	width: 100vw;
+	min-height: 100vh;
 	color: #fafafa;
 	background-color: #121212;
 	padding: 10px;
 }
 
 .Dashboard {
-
 }
-.device {
+.roomLabel {
+	color: #fafafa;
+	font-weight: 500;
+	padding: 10px 0 5px;
+}
+.device, .roomLabel {
 	color: #fafafa;
 	font-weight: 500;
 }
@@ -58,7 +56,7 @@ html {
 	padding: 10px;
 	position: relative;
 	align-items: center;
-	background-color: #1D1D1D;
+	background-color: #1d1d1d;
 	transition: all 0.4s;
 }
 .icon {
@@ -72,10 +70,11 @@ html {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	transition: all 0.4s;
 }
 input:checked + .Toggle {
-	background-color: #3D5AFF;
+	background-color: #3d5aff;
 }
 input:checked + .Toggle > .icon {
-	background-color: #4F69FD;
+	background-color: #4f69fd;
 }

@@ -1,35 +1,29 @@
 /************PROCESS DATA TO/FROM Client****************************/
-
 var socket = io(); //load socket.io-client and connect to the host that serves the page
 window.addEventListener("load", function () {
 	//when page loads
 	if (isMobile.any()) {
-		//    alert('Mobile');
-		document.addEventListener("touchstart", ReportTouchStart, false);
-		document.addEventListener("touchend", ReportTouchEnd, false);
-		document.addEventListener("touchmove", TouchMove, false);
 		let toggles = document.getElementsByClassName("Toggle");
-
 		for (let toggle of toggles) {
-			toggle.addEventListener("touchstart", test);
+			toggle.addEventListener("touchstart", toggleDevice);
 		}
 	} else {
 		let toggles = document.getElementsByClassName("Toggle");
-
 		for (let toggle of toggles) {
-			toggle.addEventListener("click", test);
+			toggle.addEventListener("click", toggleDevice);
 		}
 	}
 });
-function test(event) {
+function toggleDevice(event) {
 	let toggle = event.target;
 	while (toggle.className != "Toggle") {
 		toggle = toggle.parentElement;
 	}
-	toggle.previousElementSibling.checked = !toggle.previousElementSibling.checked;
-	toggle.lastElementChild.lastElementChild.innerText = toggle.previousElementSibling.checked ? "On" : "Off";
-	socket.emit("onoff", toggle.previousElementSibling.id, toggle.lastElementChild.lastElementChild.innerText);
-
+	let checkbox = toggle.previousElementSibling;
+	checkbox.checked = !checkbox.checked;
+	let state = toggle.lastElementChild.lastElementChild;
+	state.innerText = toggle.previousElementSibling.checked ? "On" : "Off";
+	socket.emit("onoff", checkbox.name, checkbox.id, state.innerText);
 }
 //Update gpio feedback when server changes LED state
 socket.on("GPIO26", function (data) {
@@ -39,36 +33,6 @@ socket.on("GPIO26", function (data) {
 	//  console.log(myJSON);
 	document.getElementById("GPIO26").checked = data;
 	//  console.log('GPIO26: '+data.toString());
-});
-
-//Update gpio feedback when server changes LED state
-socket.on("GPIO20", function (data) {
-	//  console.log('GPIO20 function called');
-	//  console.log(data);
-	var myJSON = JSON.stringify(data);
-	// console.log(myJSON);
-	document.getElementById("GPIO20").checked = data;
-	//  console.log('GPIO20: '+data.toString());
-});
-
-//Update gpio feedback when server changes LED state
-socket.on("GPIO21", function (data) {
-	//  console.log('GPIO21 function called');
-	// console.log(data);
-	var myJSON = JSON.stringify(data);
-	// console.log(myJSON);
-	document.getElementById("GPIO21").checked = data;
-	// console.log('GPIO21: '+data.toString());
-});
-
-//Update gpio feedback when server changes LED state
-socket.on("GPIO16", function (data) {
-	//  console.log('GPIO16 function called');
-	//  console.log(data);
-	var myJSON = JSON.stringify(data);
-	//  console.log(myJSON);
-	document.getElementById("GPIO16").checked = data;
-	//  console.log('GPIO16: '+data.toString());
 });
 
 function ReportTouchStart(e) {
@@ -106,22 +70,6 @@ function ReportTouchStart(e) {
 		//    console.log("GPIO16 pressed");
 		socket.emit("GPIO16", 1);
 		document.getElementById("GPIO16").checked = 1;
-	}
-}
-
-function ReportTouchEnd(e) {
-	if (e.target.id === "GPIO26M") {
-		socket.emit("GPIO26", 0);
-		document.getElementById("GPIO26").checked = 0;
-	} else if (e.target.id === "GPIO20M") {
-		socket.emit("GPIO20", 0);
-		document.getElementById("GPIO20").checked = 0;
-	} else if (e.target.id === "GPIO21M") {
-		socket.emit("GPIO21", 0);
-		document.getElementById("GPIO21").checked = 0;
-	} else if (e.target.id === "GPIO16M") {
-		socket.emit("GPIO16", 0);
-		document.getElementById("GPIO16").checked = 0;
 	}
 }
 
@@ -179,7 +127,6 @@ function ReportMouseUp(e) {
 		document.getElementById("GPIO16").checked = 0;
 	}
 }
-function TouchMove(e) {}
 
 /** function to sense if device is a mobile device ***/
 // Reference: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
