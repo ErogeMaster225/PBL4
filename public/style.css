@@ -59,6 +59,7 @@ html {
 	position: relative;
 	align-items: center;
 	background-color: #1D1D1D;
+	transition: all 0.4s;
 }
 .icon {
 	background-color: #2a2a2a;
