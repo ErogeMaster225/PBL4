@@ -3,7 +3,16 @@ let fs = require("fs"); //require filesystem module
 let url = require("url");
 let path = require("path");
 let io = require("socket.io", "net")(http);
-let serial = require("serialport");
+let SerialPort = require("serialport");
+let Readline = require("@serialport/parser-readline");
+const port1 = new SerialPort("/dev/ttyACM0", { baudRate: 9600 });
+const parser1 = port1.pipe(new Readline({ delimiter: "\n" }));
+port1.on("open", () => {
+	console.log("serial port open");
+});
+parser1.on("data", (data) => {
+	console.log("got word from arduino:", data);
+});
 /****** CONSTANTS******************************************************/
 const WebPort = 80;
 /*************** Web Browser Communication ****************************/
