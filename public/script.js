@@ -20,58 +20,26 @@ function toggleDevice(event) {
 		toggle = toggle.parentElement;
 	}
 	let checkbox = toggle.previousElementSibling;
-	checkbox.checked = !checkbox.checked;
+	//checkbox.checked = !checkbox.checked;
 	let state = toggle.lastElementChild.lastElementChild;
-	state.innerText = toggle.previousElementSibling.checked ? "On" : "Off";
-	socket.emit("onoff", checkbox.name, checkbox.id, state.innerText);
+	//state.innerText = toggle.previousElementSibling.checked ? "On" : "Off";
+	socket.emit("onoff", checkbox.name, checkbox.id, state.innerText == "Off" ? "ON" : "OFF");
 }
-//Update gpio feedback when server changes LED state
-socket.on("GPIO26", function (data) {
-	//  console.log('GPIO26 function called');
-	//  console.log(data);
-	var myJSON = JSON.stringify(data);
-	//  console.log(myJSON);
-	document.getElementById("GPIO26").checked = data;
-	//  console.log('GPIO26: '+data.toString());
-});
-
-function ReportTouchStart(e) {
-	var y = e.target.previousElementSibling;
-	if (y !== null) var x = y.id;
-	if (x !== null) {
-		// Now we know that x is defined, we are good to go.
-		if (x === "GPIO26") {
-			//     console.log("GPIO26 toggle");
-			socket.emit("GPIO26T"); // send GPIO button toggle to node.js server
-		} else if (x === "GPIO20") {
-			//     console.log("GPIO20 toggle");
-			socket.emit("GPIO20T"); // send GPIO button toggle to node.js server
-		} else if (x === "GPIO21") {
-			//      console.log("GPIO21 toggle");
-			socket.emit("GPIO21T"); // send GPIO button toggle to node.js server
-		} else if (x === "GPIO16") {
-			//    console.log("GPIO16 toggle");
-			socket.emit("GPIO16T"); // send GPIO button toggle to node.js server
+socket.on("init", function (data) {
+	let devices = data.split(";");
+	console.log(devices);
+	devices.forEach((device) => {
+		if (device.endsWith("ON")) {
+			let checkbox = document.getElementById(device.slice(0, -3));
+			checkbox.checked = true;
+			checkbox.nextElementSibling.lastElementChild.lastElementChild.innerText = "On";
+		} else if (device.endsWith("OFF")) {
+			let checkbox = document.getElementById(device.slice(0, -4));
+			checkbox.checked = false;
+			checkbox.nextElementSibling.lastElementChild.lastElementChild.innerText = "Off";
 		}
-	}
-
-	if (e.target.id === "GPIO26M") {
-		socket.emit("GPIO26", 1);
-		document.getElementById("GPIO26").checked = 1;
-	} else if (e.target.id === "GPIO20M") {
-		//   console.log("GPIO20 pressed");
-		socket.emit("GPIO20", 1);
-		document.getElementById("GPIO20").checked = 1;
-	} else if (e.target.id === "GPIO21M") {
-		//  console.log("GPIO21 pressed");
-		socket.emit("GPIO21", 1);
-		document.getElementById("GPIO21").checked = 1;
-	} else if (e.target.id === "GPIO16M") {
-		//    console.log("GPIO16 pressed");
-		socket.emit("GPIO16", 1);
-		document.getElementById("GPIO16").checked = 1;
-	}
-}
+	});
+});
 
 function ReportMouseDown(e) {
 	var y = e.target.previousElementSibling;
@@ -111,26 +79,6 @@ function ReportMouseDown(e) {
 		socket.emit("GPIO16", 1);
 	}
 }
-
-function ReportMouseUp(e) {
-	if (e.target.id === "GPIO26M") {
-		socket.emit("GPIO26", 0);
-		document.getElementById("GPIO26").checked = 0;
-	} else if (e.target.id === "GPIO20M") {
-		socket.emit("GPIO20", 0);
-		document.getElementById("GPIO20").checked = 0;
-	} else if (e.target.id === "GPIO21M") {
-		socket.emit("GPIO21", 0);
-		document.getElementById("GPIO21").checked = 0;
-	} else if (e.target.id === "GPIO16M") {
-		socket.emit("GPIO16", 0);
-		document.getElementById("GPIO16").checked = 0;
-	}
-}
-
-/** function to sense if device is a mobile device ***/
-// Reference: https://stackoverflow.com/questions/11381673/detecting-a-mobile-browser
-
 var isMobile = {
 	Android: function () {
 		return navigator.userAgent.match(/Android/i);

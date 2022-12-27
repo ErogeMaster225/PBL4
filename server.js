@@ -9,8 +9,8 @@ const { ReadlineParser } = require("@serialport/parser-readline");
 const parser1 = port1.pipe(new ReadlineParser({ delimiter: "\r\n" }));
 */
 
-/* parser1.on("data", function () {
-	console.log();
+/* parser1.on("data", function (data) {
+	socket.emit("init", data);
 });
 const port2 = new SerialPort({ path: "/dev/ttyUSB1", baudRate: 9600 });
 const parser2 = port2.pipe(new ReadlineParser({ delimiter: "\r\n" }));
@@ -83,9 +83,9 @@ io.sockets.on("connection", function (socket) {
 	console.log("A new client has connectioned.");
 	socket.on("onoff", function print(room, id, state) {
 		console.log(room, id, "is", state);
-		let command = id + state.toUpperCase();
+		let command = id + state;
 		console.log(command);
-		if (room == "Kitchen" || room == "Bathroom") {
+		if (room == "Kitchen" || room == "LivingRoom") {
 			// port1.write(command);
 		}
 	});
