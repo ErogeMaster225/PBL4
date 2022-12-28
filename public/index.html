@@ -22,7 +22,14 @@
 					<div class="icon"><i class="fa-solid fa-temperature-three-quarters"></i></div>
 					<div class="textWrapper">
 						<div class="device">Temp</div>
-						<div class="status">27</div>
+						<div id="LRTEMP" class="status">0°C</div>
+					</div>
+				</div>
+				<div class="Meter">
+					<div class="icon"><i class="fa-solid fa-droplet"></i></div>
+					<div class="textWrapper">
+						<div class="device">Humid</div>
+						<div id="LRHUMID" class="status">0%</div>
 					</div>
 				</div>
 				<input type="checkbox" id="LRLED" name="port1" hidden />
@@ -48,10 +55,17 @@
 					<div class="icon"><i class="fa-solid fa-temperature-three-quarters"></i></div>
 					<div class="textWrapper">
 						<div class="device">Temp</div>
-						<div class="status">27</div>
+						<div id="BEDTEMP" class="status">0°C</div>
 					</div>
 				</div>
-				<input type="checkbox" id="BEDLED" name="port1" hidden />
+				<div class="Meter">
+					<div class="icon"><i class="fa-solid fa-droplet"></i></div>
+					<div class="textWrapper">
+						<div class="device">Humid</div>
+						<div id="BEDHUMID" class="status">0%</div>
+					</div>
+				</div>
+				<input type="checkbox" id="BEDLED" name="port2" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
@@ -70,7 +84,7 @@
 			</div>
 			<div class="roomLabel">Cinema room</div>
 			<div class="deviceGrid">
-				<input type="checkbox" id="CLED" name="port1" hidden />
+				<input type="checkbox" id="CLED" name="port2" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
@@ -78,7 +92,7 @@
 						<div class="status">Off</div>
 					</div>
 				</div>
-				<input type="checkbox" id="CFAN" name="port1" hidden />
+				<input type="checkbox" id="CFAN" name="port2" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-fan"></i></div>
 					<div class="textWrapper">
@@ -86,7 +100,7 @@
 						<div class="status">Off</div>
 					</div>
 				</div>
-				<input type="checkbox" id="CMOVIE" name="port1" hidden />
+				<input type="checkbox" id="CMODE" name="port2" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-camera-movie"></i></div>
 					<div class="textWrapper">

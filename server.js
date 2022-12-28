@@ -14,9 +14,10 @@ const parser2 = port2.pipe(new ReadlineParser({ delimiter: "\r\n" }));
 /* const port3 = new SerialPort({ path: "/dev/ttyUSB012", baudRate: 9600 });
 const parser3 = port3.pipe(new ReadlineParser({ delimiter: "\r\n" }));
  */
-const port1devices = ["KTEMP", "LRLED", "KLED", "BATHLED", "LRFAN"];
-const port2devices = ["CLED", "CFAN", "CMOVIE"];
-const port3devices = ["BEDLED", "BEDFAN", "BEDTEMP", "DOOR"];
+
+/* const port1devices = ["KTEMP", "LRLED", "KLED", "BATHLED", "LRFAN"];
+const port2devices = ["BEDLED", "CLED", "CFAN", "CMODE", "BEDTEMP", "BEDHUMID"];
+const port3devices = [ "BEDFAN", "DOOR"]; */
 const WebPort = 80;
 /*************** Web Browser Communication ****************************/
 // Start http webserver
@@ -81,16 +82,16 @@ process.on("SIGINT", function () {
 io.sockets.on("connection", function (socket) {
 	// WebSocket Connection
 	console.log("A new client has connectioned.");
-	socket.on("onoff", function print(room, id, state) {
+	/* parser1.on("data", function (data) {
+		socket.emit("init", data);
+	}); */
+	/* parser2.on("data", function (data) {
+		socket.emit("init", data);
+	}); */
+	socket.on("onoff", function print(port, id, state) {
 		console.log(port, id, "is", state);
 		let command = id + state;
 		console.log(command);
-		/* parser1.on("data", function (data) {
-			socket.emit("init", data);
-		}); */
-		/* parser2.on("data", function (data) {
-			socket.emit("init", data);
-		}); */
 		if (port == "port1") {
 			// port1.write(command);
 		} else if (port == "port2") {

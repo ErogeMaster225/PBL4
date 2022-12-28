@@ -37,6 +37,12 @@ socket.on("init", function (data) {
 			let checkbox = document.getElementById(device.slice(0, -4));
 			checkbox.checked = false;
 			checkbox.nextElementSibling.lastElementChild.lastElementChild.innerText = "Off";
+		} else if (device.includes("TEMP")) {
+			let temp = document.getElementById(device.slice(0, device.indexOf("=")));
+			temp.innerText = device.slice(device.indexOf("=") + 1) + "°C";
+		} else if (device.includes("HUMID")) {
+			let humid = document.getElementById(device.slice(0, device.indexOf("=")));
+			humid.innerText = device.slice(device.indexOf("=") + 1) + "%";
 		}
 	});
 });
