@@ -7,16 +7,16 @@ const { SerialPort } = require("serialport");
 const { ReadlineParser } = require("@serialport/parser-readline");
 /* const port1 = new SerialPort({ path: "/dev/ttyUSB0", baudRate: 9600 });
 const parser1 = port1.pipe(new ReadlineParser({ delimiter: "\r\n" }));
-*/
-
-/* parser1.on("data", function (data) {
-	socket.emit("init", data);
-});
-const port2 = new SerialPort({ path: "/dev/ttyUSB1", baudRate: 9600 });
+ */
+/* const port2 = new SerialPort({ path: "/dev/ttyUSB01", baudRate: 9600 });
 const parser2 = port2.pipe(new ReadlineParser({ delimiter: "\r\n" }));
-parser2.on("data", function () {
-	console.log();
-}); */
+ */
+/* const port3 = new SerialPort({ path: "/dev/ttyUSB012", baudRate: 9600 });
+const parser3 = port3.pipe(new ReadlineParser({ delimiter: "\r\n" }));
+ */
+const port1devices = ["KTEMP", "LRLED", "KLED", "BATHLED", "LRFAN"];
+const port2devices = ["CLED", "CFAN", "CMOVIE"];
+const port3devices = ["BEDLED", "BEDFAN", "BEDTEMP", "DOOR"];
 const WebPort = 80;
 /*************** Web Browser Communication ****************************/
 // Start http webserver
@@ -82,11 +82,21 @@ io.sockets.on("connection", function (socket) {
 	// WebSocket Connection
 	console.log("A new client has connectioned.");
 	socket.on("onoff", function print(room, id, state) {
-		console.log(room, id, "is", state);
+		console.log(port, id, "is", state);
 		let command = id + state;
 		console.log(command);
-		if (room == "Kitchen" || room == "LivingRoom") {
+		/* parser1.on("data", function (data) {
+			socket.emit("init", data);
+		}); */
+		/* parser2.on("data", function (data) {
+			socket.emit("init", data);
+		}); */
+		if (port == "port1") {
 			// port1.write(command);
+		} else if (port == "port2") {
+			// port2.write(command);
+		} else {
+			// port3.write(command);
 		}
 	});
 	//Whenever someone disconnects this piece of code executed

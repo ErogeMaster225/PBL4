@@ -21,9 +21,6 @@ html {
 	background-color: #121212;
 	padding: 10px;
 }
-
-.Dashboard {
-}
 .roomLabel {
 	color: #fafafa;
 	font-weight: 500;
@@ -51,6 +48,22 @@ html {
 	padding-bottom: calc(100% / 2 - 6px);
 }
 .Toggle {
+	display: flex;
+	border-radius: 15px;
+	padding: 10px;
+	position: relative;
+	align-items: center;
+	background-color: #1d1d1d;
+	transition: all 0.4s;
+}
+.Meter::before {
+	content: "";
+	display: inline-block;
+	width: 1px;
+	height: 0;
+	padding-bottom: calc(100% / 2 - 6px);
+}
+.Meter {
 	display: flex;
 	border-radius: 15px;
 	padding: 10px;

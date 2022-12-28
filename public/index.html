@@ -13,90 +13,106 @@
 
 	<body oncopy="return false" oncut="return false" onpaste="return false">
 		<div class="Wrapper">
-			<!-- <div class="Dashboard">
-				<span>asd</span>
-			</div> -->
+			<div class="deviceGrid">
+
+			</div>
 			<div class="roomLabel">Living room</div>
 			<div class="deviceGrid">
-				<input type="checkbox" id="LRLED1" name="LivingRoom" hidden />
+				<div class="Meter">
+					<div class="icon"><i class="fa-solid fa-temperature-three-quarters"></i></div>
+					<div class="textWrapper">
+						<div class="device">Temp</div>
+						<div class="status">27</div>
+					</div>
+				</div>
+				<input type="checkbox" id="LRLED" name="port1" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 1</div>
+						<div class="device">Light</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
-				<input type="checkbox" id="LRLED2" name="LivingRoom" hidden />
+				<input type="checkbox" id="LRFAN" name="port1" hidden />
 				<div class="Toggle">
-					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="icon"><i class="fa-solid fa-fan"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 2</div>
-						<div class="status">Off</div>
-					</div>
-				</div>
-				<input type="checkbox" id="LRLED3" name="LivingRoom" hidden />
-				<div class="Toggle">
-					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-					<div class="textWrapper">
-						<div class="device">Light 3</div>
+						<div class="device">Fan</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
 			</div>
 			<div class="roomLabel">Bedroom</div>
 			<div class="deviceGrid">
-				<input type="checkbox" id="BEDLED1" name="Bedroom" hidden />
+				<div class="Meter">
+					<div class="icon"><i class="fa-solid fa-temperature-three-quarters"></i></div>
+					<div class="textWrapper">
+						<div class="device">Temp</div>
+						<div class="status">27</div>
+					</div>
+				</div>
+				<input type="checkbox" id="BEDLED" name="port1" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 1</div>
+						<div class="device">Light</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
-				<input type="checkbox" id="BEDLED2" name="Bedroom" hidden />
+				<input type="checkbox" id="BEDFAN" name="port1" hidden />
 				<div class="Toggle">
-					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
+					<div class="icon"><i class="fa-solid fa-fan"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 2</div>
-						<div class="status">Off</div>
-					</div>
-				</div>
-				<input type="checkbox" id="BEDLED3" name="Bedroom" hidden />
-				<div class="Toggle">
-					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
-					<div class="textWrapper">
-						<div class="device">Light 3</div>
+						<div class="device">Fan</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
 			</div>
-
-			<div class="roomLabel">Kitchen</div>
+			<div class="roomLabel">Cinema room</div>
 			<div class="deviceGrid">
-				<input type="checkbox" id="KLED1" name="Kitchen" hidden />
+				<input type="checkbox" id="CLED" name="port1" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 1</div>
+						<div class="device">Light</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
-				<input type="checkbox" id="KLED2" name="Kitchen" hidden />
+				<input type="checkbox" id="CFAN" name="port1" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-fan"></i></div>
+					<div class="textWrapper">
+						<div class="device">Fan</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+				<input type="checkbox" id="CMOVIE" name="port1" hidden />
+				<div class="Toggle">
+					<div class="icon"><i class="fa-solid fa-camera-movie"></i></div>
+					<div class="textWrapper">
+						<div class="device">Cinema Mode</div>
+						<div class="status">Off</div>
+					</div>
+				</div>
+			</div>
+			<div class="roomLabel">Kitchen</div>
+			<div class="deviceGrid">
+				<input type="checkbox" id="KLED" name="port1" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 2</div>
+						<div class="device">Light</div>
 						<div class="status">Off</div>
 					</div>
 				</div>
 			</div>
 			<div class="roomLabel">Bathroom</div>
 			<div class="deviceGrid">
-				<input type="checkbox" id="BATHLED1" name="Bathroom" hidden />
+				<input type="checkbox" id="BATHLED" name="port1" hidden />
 				<div class="Toggle">
 					<div class="icon"><i class="fa-solid fa-lightbulb"></i></div>
 					<div class="textWrapper">
-						<div class="device">Light 1</div>
+						<div class="device">Light</div>
 						<div class="status">Off</div>
 					</div>
 				</div>

@@ -26,7 +26,7 @@ function toggleDevice(event) {
 	socket.emit("onoff", checkbox.name, checkbox.id, state.innerText == "Off" ? "ON" : "OFF");
 }
 socket.on("init", function (data) {
-	let devices = data.split(";");
+	let devices = data.slice(0, -1).split(";");
 	console.log(devices);
 	devices.forEach((device) => {
 		if (device.endsWith("ON")) {
