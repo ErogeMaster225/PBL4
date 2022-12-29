@@ -43,6 +43,9 @@ socket.on("init", function (data) {
 		} else if (device.includes("HUMID")) {
 			let humid = document.getElementById(device.slice(0, device.indexOf("=")));
 			humid.innerText = device.slice(device.indexOf("=") + 1) + "%";
+		} else if (device.includes("FIRE")) {
+			let fire = document.getElementById(device.slice(0, device.indexOf("=")));
+			fire.innerText = device.slice(device.indexOf("=") + 1) == "ON" ? "On" : "Off";
 		}
 	});
 });
