@@ -29,7 +29,14 @@ socket.on("init", function (data) {
 	let devices = data.slice(0, -1).split(";");
 	console.log(devices);
 	devices.forEach((device) => {
-		if (device.endsWith("ON")) {
+		if (device.includes("FIRE")) {
+			let fire = document.getElementById(device.slice(0, device.indexOf("=")));
+			fire.innerText = device.slice(device.indexOf("=") + 1) == "ON" ? "On" : "Off";
+		} else if (device.startsWith("DOOR")) {
+			let checkbox = document.getElementById("DOOR");
+			checkbox.checked = device.endsWith("UNLOCK") ? true : false;
+			checkbox.nextElementSibling.lastElementChild.lastElementChild.innerText = device.endsWith("UNLOCK") ? "Open" : "Closed";
+		} else if (device.endsWith("ON")) {
 			let checkbox = document.getElementById(device.slice(0, -3));
 			checkbox.checked = true;
 			checkbox.nextElementSibling.lastElementChild.lastElementChild.innerText = "On";
@@ -43,9 +50,6 @@ socket.on("init", function (data) {
 		} else if (device.includes("HUMID")) {
 			let humid = document.getElementById(device.slice(0, device.indexOf("=")));
 			humid.innerText = device.slice(device.indexOf("=") + 1) + "%";
-		} else if (device.includes("FIRE")) {
-			let fire = document.getElementById(device.slice(0, device.indexOf("=")));
-			fire.innerText = device.slice(device.indexOf("=") + 1) == "ON" ? "On" : "Off";
 		}
 	});
 });
